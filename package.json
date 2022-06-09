@@ -1,0 +1,15 @@
+{
+  "name": "matchle",
+  "version": "1.0.0",
+  "description": "A World Cup match guessing game",
+  "main": "script.js",
+  "dependencies": {
+    "country-list-js": "^3.1.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Victor Huang",
+  "license": "ISC"
+}

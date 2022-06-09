@@ -1,0 +1,113 @@
+h1 {
+    text-align: center;
+   }
+
+body {
+    background-color:#9aebd59c;
+}
+
+#game-board {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.team-box {
+  border: 2px solid gray;
+  border-radius: 3px;
+  margin: 10px 4px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  height: 6rem;
+  width: 8rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.score-box {
+    border: 2px solid gray;
+    border-radius: 3px;
+    margin: 10px 4px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    height: 6rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+.year-box {
+    border: 2px solid gray;
+    border-radius: 3px;
+    margin: 10px 4px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    height: 6rem;
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+.filled-box {
+  border: 2px solid black;
+}
+
+.guess-row {
+  display: flex;
+}
+
+
+div.form
+{
+    display: block;
+    text-align: center;
+}
+
+div.selectize-control.single:nth-of-type(4n+1){
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8rem;
+    height: 3rem;
+    margin: 10px 4px;
+}
+
+div.selectize-control.single:nth-of-type(2n+2){
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 6rem;
+    height: 3rem;
+    margin: 10px 4px;
+}
+
+div.selectize-control.single:nth-of-type(3){
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 7rem;
+    height: 3rem;
+    margin: 10px 4px;
+}
+
+input {
+    width: 620px;
+    height: 30px;
+    text-align: center;
+    background-color:#4df615;
+}
+
+/* form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+} */
