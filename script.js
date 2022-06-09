@@ -76,6 +76,27 @@ function initBoard() {
 
 initBoard()
 
+
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-bottom-full-width",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+}
+
+toastr["info"]("Guess A World Cup Game! <br> Green is for correct guesses, <br>Yellow is for guesses on the correct continent.", "Welcome!")
+
 document.getElementById("form").addEventListener("submit", (e) =>{
     
     var rightFlag = true

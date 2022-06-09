@@ -1,5 +1,7 @@
 # Matchle
 
+https://xarpet.github.io/Matchle/
+
 A wordle variant where you guess World Cup matches instead of words.
 
 Corrent guesses will be green, team guesses on the correct continent will be yellow. The order of the team doesn't matter.
