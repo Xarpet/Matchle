@@ -3,8 +3,7 @@ const NUMBER_OF_GUESSES = 6;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
-// let rightGuessList = MATCHES[Math.floor(Math.random() * MATCHES.length)]
-var rightGuessList = MATCHES[0]
+let rightGuessList = MATCHES[Math.floor(Math.random() * MATCHES.length)]
 console.log(rightGuessList)
 
 const animateCSS = (element, animation, prefix = 'animate__') =>
