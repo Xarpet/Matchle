@@ -4,7 +4,6 @@ let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 let rightGuessList = MATCHES[Math.floor(Math.random() * MATCHES.length)]
-console.log(rightGuessList)
 
 const animateCSS = (element, animation, prefix = 'animate__') =>
   // We create a Promise and return it
