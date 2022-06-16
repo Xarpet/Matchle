@@ -12,4 +12,4 @@ data from https://github.com/openfootball/worldcup
 
 Heavily inspired by [Worldle](https://worldle.teuteuf.fr/)
 
-Using [Selectize](https://selectize.dev/), [toastr](https://github.com/CodeSeven/toastr) and (Animate.css)[https://animate.style]
+Using [Selectize](https://selectize.dev/), [toastr](https://github.com/CodeSeven/toastr) and [Animate.css](https://animate.style)
