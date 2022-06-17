@@ -21,7 +21,6 @@ export const MATCHES = [
     ["Germany", "1", "2002", "0", "South Korea"],
     ["South Korea", "2", "2002", "1", "Italy"],
     ["France", "3", "1998", "0", "Brazil"],
-    ["France", "2", "1998", "1", "Croatia"],
     ["Germany", "1", "1990", "0", "Argentina"],
     ["Argentina", "3", "1986", "2", "Germany"],
     ["China", "0", "2002", "4", "Brazil"],
