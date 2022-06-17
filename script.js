@@ -4,6 +4,8 @@ let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 let rightGuessList = MATCHES[Math.floor(Math.random() * MATCHES.length)]
+let guessResult = [0,0,0,0,0] // [[2,1,3,1,1] ... ] where 1 is correct, 2 is yellow(half correct) and 3 is wrong
+let finalResult = []
 
 const animateCSS = (element, animation, prefix = 'animate__') =>
   // We create a Promise and return it
@@ -40,6 +42,34 @@ function findContinent(name){
         }
     }
 }
+// Wordle 363 X/6
+
+// ⬛⬛⬛🟨⬛
+// ⬛🟨🟨⬛⬛
+// 🟨⬛⬛⬛🟩
+// ⬛⬛⬛🟨🟩
+// ⬛⬛🟩🟩🟩
+// ⬛⬛🟩🟩🟩
+
+function printResult(result){
+    let resultString = "Matchle\nBy Victor Huang\n \n" 
+    for (var i = 0; i < result.length; i++){
+        for (var j = 0; j < result[i].length; j++){
+            if (result[i][j] == 1){
+                resultString += "🟩"
+            }
+            else if (result[i][j] == 2){
+                resultString += "🟨"
+            }
+            else if (result[i][j] == 3){
+                resultString += "⬛"
+            }
+        }
+        resultString += "\n"
+    }
+    return resultString
+}
+
 
 function initBoard() {
     let board = document.getElementById("game-board");
@@ -70,6 +100,11 @@ function initBoard() {
         
         board.appendChild(row)
     }
+}
+
+function copyResult(text){
+    navigator.clipboard.writeText(text)
+    toastr["info"]("Results are copied to clipboard")
 }
 
 initBoard()
@@ -150,7 +185,9 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             animateCSS(box1, 'flipInX')
             //shade box
             box1.style = "background-Image: url(https://raw.githubusercontent.com/hampusborgos/country-flags/main/png250px/" + findCode(country1) + ".png); background-size:100% 100%;"
-        }, 250)}
+        }, 250)
+        guessResult[0] = 1
+    }
     else if (findContinent(country1)==findContinent(rightGuessList[0])){
         rightFlag = false
         setTimeout(()=> {
@@ -158,8 +195,9 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             animateCSS(box1, 'flipInX')
             //shade box
             box1.innerHTML = findContinent(country1)
-            box1.style = "background-color: yellow"
+            box1.style = "background-color: #EC9B3B"
         }, 250)
+        guessResult[0] = 2
     }
     else {
         rightFlag = false
@@ -167,8 +205,9 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             //flip box
             animateCSS(box1, 'flipInX')
             //shade box
-            box1.style = "background-color: red"
+            box1.style = "background-color: #121213"
         }, 250)
+        guessResult[0] = 3
     }
 
     if (country2 == rightGuessList[4]) {
@@ -178,6 +217,7 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             //shade box
             box5.style = "background-Image: url(https://raw.githubusercontent.com/hampusborgos/country-flags/main/png250px/" + findCode(country2) + ".png); background-size:100% 100%;"
         }, 500)
+        guessResult[4] = 1
     }
     else if (findContinent(country2)==findContinent(rightGuessList[4])) {
         rightFlag = false
@@ -186,8 +226,9 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             animateCSS(box5, 'flipInX')
             //shade box
             box5.innerHTML = findContinent(country2)
-            box5.style = "background-color: yellow"
+            box5.style = "background-color: #EC9B3B"
         }, 500)
+        guessResult[4] = 2
     }
     else {
         rightFlag = false
@@ -195,8 +236,9 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             //flip box
             animateCSS(box5, 'flipInX')
             //shade box
-            box5.style = "background-color: red"
+            box5.style = "background-color: #121213"
         }, 500)
+        guessResult[4] = 3
     }
 
     // finish the country part
@@ -208,8 +250,9 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             animateCSS(box2, 'flipInX')
             //shade box
             box2.innerHTML = score1
-            box2.style = "background-color: green"
+            box2.style = "background-color: #538d4e"
         }, 750)
+        guessResult[1] = 1
     }
     else {
         rightFlag = false
@@ -217,8 +260,9 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             //flip box
             animateCSS(box2, 'flipInX')
             //shade box
-            box2.style = "background-color: red"
+            box2.style = "background-color: #121213"
         }, 750)
+        guessResult[1] = 3
     }
 
     if (score2 == rightGuessList[3]) {
@@ -227,8 +271,9 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             animateCSS(box4, 'flipInX')
             //shade box
             box4.innerHTML = score2
-            box4.style = "background-color: green"
+            box4.style = "background-color: #538d4e"
         }, 1000)
+        guessResult[3] = 1
     }
     else {
         rightFlag = false
@@ -236,8 +281,9 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             //flip box
             animateCSS(box4, 'flipInX')
             //shade box
-            box4.style = "background-color: red"
+            box4.style = "background-color: #121213"
         }, 1000)
+        guessResult[3] = 3
     }
 
     if (year == rightGuessList[2]){
@@ -246,8 +292,9 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             animateCSS(box3, 'flipInX')
             //shade box
             box3.innerHTML = year
-            box3.style = "background-color: green"
+            box3.style = "background-color: #538d4e"
         }, 1250)
+        guessResult[2] = 1
     }
     else {
         rightFlag = false
@@ -255,15 +302,22 @@ document.getElementById("form").addEventListener("submit", (e) =>{
             //flip box
             animateCSS(box3, 'flipInX')
             //shade box
-            box3.style = "background-color: red"
+            box3.style = "background-color: #121213"
         }, 1250)
+        guessResult[2] = 3
     }
-
+    finalResult.push(guessResult)
     // ending
     if (rightFlag) {
         setTimeout(()=> {
             toastr.success("You are right! You made it in " + (6-guessesRemaining) + " guesses!")
             document.getElementById("form").remove()
+            let share = document.createElement("button")
+            share.innerHTML = "share!"
+            share.id = "share"
+            share.onclick = () => copyResult(printResult(finalResult));
+            let board = document.getElementById("game-board")
+            board.appendChild(share)
         }, 1500)
     }
     else if (guessesRemaining == 0){
@@ -280,17 +334,26 @@ document.getElementById("form").addEventListener("submit", (e) =>{
 
             animateCSS(box2, 'flipInX')
             box2.innerHTML = rightGuessList[1]
-            box2.style = "background-color: green"
+            box2.style = "background-color: #538d4e"
 
             animateCSS(box4, 'flipInX')
             box4.innerHTML = rightGuessList[3]
-            box4.style = "background-color: green"
+            box4.style = "background-color: #538d4e"
 
             animateCSS(box3, 'flipInX')
             box3.innerHTML = rightGuessList[2]
-            box3.style = "background-color: green"
+            box3.style = "background-color: #538d4e"
             document.getElementById("form").remove()
+            let share = document.createElement("button")
+            share.innerHTML = "SHARE!"
+            share.id = "share"
+            share.onclick = () => copyResult(printResult(finalResult));
+            let board = document.getElementById("game-board")
+            board.appendChild(share)
         }, 1500)
+    }
+    else {
+        guessResult = [0,0,0,0,0]
     }
 })
 
